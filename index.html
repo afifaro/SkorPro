@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkorPro - Sistem Penilaian Profesional</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Desktop -->
+    <nav class="nav-desktop">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>📊 SkorPro</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text" data-lang-id="Dashboard" data-lang-en="Dashboard">Dashboard</span>
+                </a>
+                <a href="#data-siswa" class="nav-link" data-page="data-siswa">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text" data-lang-id="Data Siswa" data-lang-en="Student Data">Data Siswa</span>
+                </a>
+                <a href="#generator" class="nav-link" data-page="generator">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-text" data-lang-id="Generator LJK" data-lang-en="LJK Generator">Generator LJK</span>
+                </a>
+                <a href="#scanner" class="nav-link" data-page="scanner">
+                    <span class="nav-icon">📸</span>
+                    <span class="nav-text" data-lang-id="Scanner" data-lang-en="Scanner">Scanner</span>
+                </a>
+                <a href="#analisis" class="nav-link" data-page="analisis">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text" data-lang-id="Analisis" data-lang-en="Analysis">Analisis</span>
+                </a>
+                <a href="#rapor" class="nav-link" data-page="rapor">
+                    <span class="nav-icon">📘</span>
+                    <span class="nav-text" data-lang-id="Nilai Rapor" data-lang-en="Report Card">Nilai Rapor</span>
+                </a>
+            </div>
+            <div class="nav-controls">
+                <button class="btn-icon" id="themeSwitcher" title="Toggle Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="btn-icon" id="langSwitcher" title="Change Language">
+                    <span class="lang-text">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navigation Mobile -->
+    <nav class="nav-mobile">
+        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-text" data-lang-id="Dashboard" data-lang-en="Dashboard">Dashboard</span>
+        </a>
+        <a href="#data-siswa" class="nav-link" data-page="data-siswa">
+            <span class="nav-icon">👥</span>
+            <span class="nav-text" data-lang-id="Data" data-lang-en="Data">Data</span>
+        </a>
+        <a href="#generator" class="nav-link" data-page="generator">
+            <span class="nav-icon">📝</span>
+            <span class="nav-text" data-lang-id="LJK" data-lang-en="LJK">LJK</span>
+        </a>
+        <a href="#scanner" class="nav-link" data-page="scanner">
+            <span class="nav-icon">📸</span>
+            <span class="nav-text" data-lang-id="Scan" data-lang-en="Scan">Scan</span>
+        </a>
+        <a href="#analisis" class="nav-link" data-page="analisis">
+            <span class="nav-icon">📊</span>
+            <span class="nav-text" data-lang-id="Analisis" data-lang-en="Analysis">Analisis</span>
+        </a>
+        <a href="#rapor" class="nav-link" data-page="rapor">
+            <span class="nav-icon">📘</span>
+            <span class="nav-text" data-lang-id="Rapor" data-lang-en="Report">Rapor</span>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="page-dashboard" class="page active">
+            <div class="page-header">
+                <h1 id="greetingText" data-lang-id="Selamat Pagi" data-lang-en="Good Morning">Selamat Pagi</h1>
+                <p class="subtitle" id="userGreeting"></p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🏫</div>
+                    <div class="stat-content">
+                        <h3 id="totalSekolah">0</h3>
+                        <p data-lang-id="Total Sekolah" data-lang-en="Total Schools">Total Sekolah</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <h3 id="totalKelas">0</h3>
+                        <p data-lang-id="Total Kelas" data-lang-en="Total Classes">Total Kelas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍🎓</div>
+                    <div class="stat-content">
+                        <h3 id="totalSiswa">0</h3>
+                        <p data-lang-id="Total Siswa" data-lang-en="Total Students">Total Siswa</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-content">
+                        <h3 id="totalUjian">0</h3>
+                        <p data-lang-id="Total Ujian" data-lang-en="Total Exams">Total Ujian</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-charts">
+                <div class="chart-card">
+                    <h3 data-lang-id="Aktivitas Terakhir" data-lang-en="Recent Activity">Aktivitas Terakhir</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Siswa Page -->
+        <div id="page-data-siswa" class="page">
+            <div class="page-header" id="dataSiswaHeader">
+                <h1 data-lang-id="Data Siswa" data-lang-en="Student Data">Data Siswa</h1>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="guru">
+                    <span data-lang-id="Data Guru" data-lang-en="Teacher Data">Data Guru</span>
+                </button>
+                <button class="tab-btn" data-tab="sekolah">
+                    <span data-lang-id="Data Sekolah" data-lang-en="School Data">Data Sekolah</span>
+                </button>
+                <button class="tab-btn" data-tab="kelas">
+                    <span data-lang-id="Data Kelas" data-lang-en="Class Data">Data Kelas</span>
+                </button>
+                <button class="tab-btn" data-tab="mapel">
+                    <span data-lang-id="Mata Pelajaran" data-lang-en="Subjects">Mata Pelajaran</span>
+                </button>
+                <button class="tab-btn" data-tab="semester">
+                    <span data-lang-id="Semester" data-lang-en="Semester">Semester</span>
+                </button>
+                <button class="tab-btn" data-tab="siswa">
+                    <span data-lang-id="Data Siswa" data-lang-en="Students">Data Siswa</span>
+                </button>
+                <button class="tab-btn" data-tab="rencana">
+                    <span data-lang-id="Rencana Penilaian" data-lang-en="Assessment Plan">Rencana Penilaian</span>
+                </button>
+            </div>
+
+            <div id="tabContent" class="tab-content"></div>
+        </div>
+
+        <!-- Generator Page -->
+        <div id="page-generator" class="page">
+            <div class="page-header">
+                <h1 data-lang-id="Generator LJK" data-lang-en="LJK Generator">Generator LJK</h1>
+            </div>
+            <div id="generatorContent"></div>
+        </div>
+
+        <!-- Scanner Page -->
+        <div id="page-scanner" class="page">
+            <div class="page-header">
+                <h1 data-lang-id="Scanner LJK" data-lang-en="LJK Scanner">Scanner LJK</h1>
+            </div>
+            <div id="scannerContent"></div>
+        </div>
+
+        <!-- Analisis Page -->
+        <div id="page-analisis" class="page">
+            <div class="page-header">
+                <h1 data-lang-id="Analisis Butir Soal" data-lang-en="Item Analysis">Analisis Butir Soal</h1>
+            </div>
+            <div id="analisisContent"></div>
+        </div>
+
+        <!-- Rapor Page -->
+        <div id="page-rapor" class="page">
+            <div class="page-header">
+                <h1 data-lang-id="Nilai Rapor" data-lang-en="Report Card">Nilai Rapor</h1>
+            </div>
+            <div id="raporContent"></div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p data-lang-id="Memuat..." data-lang-en="Loading...">Memuat...</p>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer"></div>
+
+    <!-- Scripts -->
+<!-- Di bagian dashboard, ganti dengan ini -->
+<div id="devToolsPanel" style="display: none;">
+    <div class="card mt-3" style="border: 2px dashed var(--danger-color);">
+        <div class="card-header" style="background: var(--danger-color); color: white;">
+            <h4>⚠️ Development Tools</h4>
+            <button onclick="closeDevTools()" style="float: right; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
+        </div>
+        <div class="card-body">
+            <p style="color: var(--text-secondary);">
+                Gunakan tombol ini jika aplikasi error atau database corrupt.
+            </p>
+            <button onclick="resetCompleteDatabase()" class="btn btn-danger">
+                🗑️ Reset Complete Database
+            </button>
+            <button onclick="exportBackup()" class="btn btn-warning">
+                📦 Export Backup
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Double click logo untuk show dev tools
+document.querySelector('.nav-brand h2')?.addEventListener('dblclick', function() {
+    const panel = document.getElementById('devToolsPanel');
+    if (panel) {
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+});
+
+function closeDevTools() {
+    document.getElementById('devToolsPanel').style.display = 'none';
+}
+
+function exportBackup() {
+    if (typeof App !== 'undefined' && App.exportAllData) {
+        App.exportAllData();
+    }
+}
+
+function resetCompleteDatabase() {
+    if (!confirm('⚠️ PERINGATAN!\n\nIni akan menghapus SEMUA data dan reset database.\nTindakan ini TIDAK BISA dibatalkan!\n\nLanjutkan?')) {
+        return;
+    }
+
+    console.log('🗑️ Resetting database...');
+
+    if (Database.db) {
+        Database.db.close();
+        Database.db = null;
+    }
+
+    const deleteRequest = indexedDB.deleteDatabase('SkorProDB');
+    
+    deleteRequest.onsuccess = () => {
+        console.log('✅ IndexedDB deleted');
+        localStorage.clear();
+        console.log('✅ LocalStorage cleared');
+        alert('✅ Database berhasil direset!\n\nHalaman akan reload...');
+        location.reload();
+    };
+
+    deleteRequest.onerror = (e) => {
+        console.error('❌ Delete failed:', e);
+        alert('❌ Gagal reset database. Coba tutup semua tab aplikasi ini dan coba lagi.');
+    };
+
+    deleteRequest.onblocked = () => {
+        alert('⚠️ Database sedang digunakan.\n\nTutup semua tab aplikasi ini, lalu coba lagi.');
+    };
+}
+</script>
+    <!-- Library Scripts - PASTIKAN URUTAN INI -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- App Scripts -->
+<script src="js/utils.js"></script>
+<script src="js/database.js"></script>
+<script src="js/statistics.js"></script>
+<script src="js/data-siswa.js"></script>
+<script src="js/generator.js"></script>
+<script src="js/scanner.js"></script>
+<script src="js/analisis.js"></script>
+<script src="js/rapor.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
